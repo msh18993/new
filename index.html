@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<script src="screenshot.js"></script>
-<body>
-    <h1>hello</h1>
-</body>
-</html>
+<script>
+  function getBase64(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      document.getElementById("in").innerText = reader.result;
+      console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log("Error: ", error);
+    };
+  }
+</script>
+<input type="file" id="ws" />
+<button onclick="getBase64(document.querySelector('#ws').files[0])"></button>
+<textarea id="in"></textarea>
